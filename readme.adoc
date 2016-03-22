@@ -1,0 +1,52 @@
+= piCOMM - Server Room Monitoring
+
+Using a Raspberry Pi to monitor various sensors, tailored for server room environmentals. 
+
+== Features
+* Reporting and Logging
+* Common sensors
+* Expandable features
+* Cheap alternative to Enterprise solutions
+
+== About
+I was looking for a fun project to use a Raspberry Pi with, and while dreaming of enterprise server room monitoring and reporting hardware the idea struck me. Reasoning for not using extremely cheap tiny microcontrollers is by the time I had all the features I wanted (shields, breakout boards), price point was close enough to a Pi. The Pi, since it runs Debian, would be far suited for this task, and offers more flexability.
+
+This concept of using the Pi for this purpose isn't new, but I felt a single collection of documents and scripts would allow more people to consider a project like this.
+
+I'll say it now, I'm no Python developer. 
+
+== Requirements
+* Raspberry Pi (only tested on a 2 so far)
+* Sensors for elements wanting to measure
+* Nagios server
+
+== Future Ideas
+* Smoke/Gas detection
+* Moisture/Liquid detection
+* Temperature array network
+* Live video stream
+* Surveillance recording
+* Mains power failure detection
+* Optical sensor
+
+== Installation
+
+=== Rasbian
+Nothing special here, used lastest at the time I started this project. Run in CLI mode, because I have no intention of having HDMI connected all the time.
+
+=== Hardware
+No need to go into details about breadboards, breakout cables, etc. How you feel comfortable making connections is just fine. 
+
+=== NRPE
+My method of reporting and logging was using NRPE, connecting to my existing Nagios system. One can setup a Nagios server locally on the Pi, but that's outside the scope of this project. 
+
+Followed this excellent guide for NRPE setup, http://crushbeercrushcode.org/2014/07/monitoring-temperatures-with-rpi/ 
+
+Logging I used nagiosgraph server side.
+Follow the documentation in NRPE for adding scripts to the sudoers for the nagios user. If you want to pass in the arguements from server side, follow the documentation how to do so, but understand the possible risks involved.  
+
+== Sensors
+
+=== Temperature and Humidity (DHT22)
+
+link:DHT22/dht22.adoc[Documentation]
