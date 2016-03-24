@@ -6,7 +6,7 @@ The NRPE command script is included, check_DHT.py
 
 This was enough to use the sensor as intended. Current state of humidity checking is if it get's to high, this is also acting like a poormans water indicator. 
 
-Add this to your nrpe.cfg
+Add this to your Pi nrpe.cfg
 
 ----
 command[check_DHT_temp]=sudo /usr/local/nagios/libexec/check_DHT.py -s 22 -p 4 -t temp -w 30 -c 40
