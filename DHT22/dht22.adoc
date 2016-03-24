@@ -13,3 +13,24 @@ command[check_DHT_temp]=sudo /usr/local/nagios/libexec/check_DHT.py -s 22 -p 4 -
 command[check_DHT_humid]=sudo /usr/local/nagios/libexec/check_DHT.py -s 22 -p 4 -t humid -w 70 -c 90
 ----
 
+Add this to your Nagios Sever *.cfg
+
+NOTE: Example shown is with nagiosgraph installed
+
+----
+define service{
+        use                             generic-service,nagiosgraph
+        host_name                       <host_name from host definition>
+        service_description             Room Temperature
+        check_command                   check_nrpe!check_DHT_temp
+        check_interval                  1
+        }
+
+define service{
+        use                             generic-service,nagiosgraph
+        host_name                       <host_name from host definition>
+        service_description             Room Humidity
+        check_command                   check_nrpe!check_DHT_humid
+        check_interval                  1
+        }
+----
